@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:prabhatk.tech)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}
