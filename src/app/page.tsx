@@ -1,3 +1,4 @@
+import { BackToTop } from "@/components/back-to-top";
 import { BootScreen } from "@/components/boot-screen";
 import { Cursor } from "@/components/cursor";
 import { Nav } from "@/components/nav";
@@ -43,6 +44,7 @@ export default function Home() {
           © {new Date().getFullYear()} {profile.name} · Built with Next.js &amp; Tailwind
         </div>
       </footer>
+      <BackToTop />
     </>
   );
 }
