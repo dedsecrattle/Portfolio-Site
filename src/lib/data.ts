@@ -107,7 +107,7 @@ export const experience: Experience[] = [
     ],
   },
   {
-    role: "Full Stack Developer Intern",
+    role: "Software Engineering Intern",
     org: "Hypotenuse AI",
     url: "https://www.hypotenuse.ai",
     badge: "YC S20",
