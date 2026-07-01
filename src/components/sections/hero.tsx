@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Download, Mail } from "lucide-react";
 import { Github, Linkedin } from "@/components/brand-icons";
 import { GlitchText } from "@/components/glitch-text";
 import { Typewriter } from "@/components/typewriter";
@@ -30,6 +30,13 @@ export function Hero() {
       <div className="mt-10 flex flex-wrap gap-3">
         <a href="#projects" className={buttonVariants({ size: "lg" })}>
           View my work <ArrowUpRight className="h-4 w-4" />
+        </a>
+        <a
+          href={socials.resume}
+          download
+          className={buttonVariants({ variant: "outline", size: "lg" })}
+        >
+          <Download className="h-4 w-4" /> Resume
         </a>
         <a
           href={socials.github}

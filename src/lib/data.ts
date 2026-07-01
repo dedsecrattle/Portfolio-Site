@@ -12,6 +12,7 @@ export const socials = {
   github: "https://github.com/dedsecrattle",
   linkedin: "https://www.linkedin.com/in/prabhat0912/",
   email: "itsprabxxx@gmail.com",
+  resume: "/prabhat-kumar-resume.pdf",
 } as const;
 
 export const skills: { group: string; items: string[] }[] = [
