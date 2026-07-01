@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Prabhat Kumar
 
-## Getting Started
+Minimalist, tech-savvy personal portfolio. Single-page, static, dark-first with
+a terminal-flavoured hero (boot intro, typewriter, glitch, CRT scanlines).
 
-First, run the development server:
+**Live:** [prabhatk.tech](https://prabhatk.tech)
+
+## Stack
+
+- [Next.js](https://nextjs.org) 16 (App Router, static export)
+- [Tailwind CSS](https://tailwindcss.com) v4 + [shadcn/ui](https://ui.shadcn.com)
+- [next-themes](https://github.com/pacocoursey/next-themes) — dark/light toggle
+- [lucide-react](https://lucide.dev) — icons
+- Geist Sans / Geist Mono via `next/font`
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All content lives in one file — [`src/lib/data.ts`](src/lib/data.ts). Update the
+profile, socials, skills, projects, experience, education, and stats there; the
+sections read from it, so no component edits are needed.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structure
 
-## Learn More
+```
+src/
+  app/            layout, page composition, global styles
+  lib/data.ts     single source of truth for all content
+  components/
+    sections/     hero, about, skills, projects, experience, education, stats, contact
+    ui/           shadcn primitives (button, card, badge)
+    *.tsx         nav, theme toggle, typewriter, glitch, boot screen, brand icons
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Push to `main` and import at [vercel.com/new](https://vercel.com/new) — zero
+config. The build is fully static and prerendered.
