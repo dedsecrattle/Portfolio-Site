@@ -226,11 +226,6 @@ export const awards: Award[] = [
     detail: "National scholarship for academic merit; also qualified Pre-RMO and RMO (Regional Mathematical Olympiad).",
   },
   {
-    title: "CBSE Class 12 — Regional Topper",
-    detail: "97.6% aggregate; highest scorer in school and the Mumbai Region.",
-    year: "2021",
-  },
-  {
     title: "KVS Merit Certificate",
     detail: "Placed in the top 1.5% of students across all Kendriya Vidyalayas nationwide.",
     year: "2021",
