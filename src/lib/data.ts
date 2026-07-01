@@ -168,7 +168,7 @@ export const education: Education[] = [
   {
     school: "National University of Singapore",
     details: [
-      "Bachelor of Computing in Computer Science — specialising in AI & Software Engineering.",
+      "Bachelor of Computing in Computer Science (Honours, Distinction) — specialising in AI & Software Engineering.",
       "NUS Science & Technology Undergraduate Scholarship (1 of 7 Indian students, Class of 2026).",
     ],
     period: "Aug 2022 — May 2026",
