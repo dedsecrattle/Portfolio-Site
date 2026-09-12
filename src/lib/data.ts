@@ -5,6 +5,9 @@ export const profile = {
   tagline: "Full Stack Developer & AI/ML Engineer",
   location: "Singapore",
   bio: "Full Stack Developer and AI/ML Engineer with 5+ years building production-grade software. I'm a Software Engineer at Hypotenuse AI (YC S20), where I work end-to-end across the stack — fast React frontends, scalable backends, and DevOps — while shipping AI features that put generative models to real use for enterprise clients. Off the clock I write a lot of systems-level Rust. I care about building things people actually use, and making them fast.",
+  // Short version of `bio` for search results and link previews (WhatsApp, Facebook, LinkedIn, X).
+  summary:
+    "Full Stack Developer & AI/ML Engineer in Singapore. Software Engineer at Hypotenuse AI (YC S20) — fast React frontends, scalable backends, and production AI features. Rust enthusiast.",
   roles: ["Full Stack Developer", "AI/ML Engineer", "Rust Enthusiast", "Entrepreneur"],
 } as const;
 
