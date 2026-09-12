@@ -1,24 +1,37 @@
+import { GraduationCapIcon } from "@phosphor-icons/react/ssr";
 import { SectionHeading } from "@/components/sections/heading";
 import { education } from "@/lib/data";
 
 export function Education() {
   return (
-    <section id="education" className="mx-auto max-w-4xl px-6 py-16">
-      <SectionHeading n="05" title="Education" />
-      <ol className="relative border-l border-border">
-        {education.map((ed) => (
-          <li key={ed.school} className="mb-10 ml-6 last:mb-0">
-            <span className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border-2 border-brand bg-background" />
-            <p className="font-mono text-xs text-muted-foreground">{ed.period}</p>
-            <h3 className="mt-1 font-semibold">{ed.school}</h3>
-            <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted-foreground marker:text-brand">
-              {ed.details.map((d, i) => (
-                <li key={i}>{d}</li>
-              ))}
-            </ul>
-          </li>
+    <section id="education" className="mx-auto max-w-5xl px-6 py-16">
+      <SectionHeading n="05" title="Education" color="bg-nb-purple" />
+      <div className="grid gap-6 md:grid-cols-2">
+        {education.map((ed, i) => (
+          <div key={ed.school} className="flex flex-col border-2 border-ink bg-card shadow-nb">
+            <div
+              className={`flex items-center justify-between gap-3 border-b-2 border-ink px-4 py-3 text-on-accent ${
+                i === 0 ? "bg-nb-purple" : "bg-nb-blue"
+              }`}
+            >
+              <span className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wide">
+                <GraduationCapIcon weight="bold" className="size-4" /> {ed.period}
+              </span>
+            </div>
+            <div className="p-5">
+              <h3 className="text-lg font-bold leading-tight">{ed.school}</h3>
+              <ul className="mt-4 space-y-2 text-sm leading-relaxed">
+                {ed.details.map((d, j) => (
+                  <li key={j} className="flex gap-3">
+                    <span className="mt-[7px] size-2 shrink-0 bg-ink" aria-hidden />
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         ))}
-      </ol>
+      </div>
     </section>
   );
 }

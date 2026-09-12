@@ -28,9 +28,9 @@ export function Typewriter({ words }: { words: readonly string[] }) {
   }, [text, deleting, i, words]);
 
   return (
-    <span>
+    <span className="font-bold">
       {text}
-      <span className="ml-0.5 inline-block w-2 animate-pulse bg-brand align-middle" style={{ height: "1.1em" }} />
+      <span className="caret ml-1 inline-block w-2.5 bg-ink align-middle" style={{ height: "1.1em" }} aria-hidden />
     </span>
   );
 }

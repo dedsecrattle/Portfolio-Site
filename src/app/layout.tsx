@@ -18,7 +18,10 @@ const siteUrl = "https://prabhatk.tech";
 const title = `${profile.name} — ${profile.tagline}`;
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fbf7ec" },
+    { media: "(prefers-color-scheme: dark)", color: "#121212" },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
     default: title,
     template: `%s — ${profile.name}`,
   },
-  description: profile.bio,
+  description: profile.summary,
   keywords: [
     "Prabhat Kumar",
     "Full Stack Developer",
@@ -49,7 +52,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title,
-    description: profile.bio,
+    description: profile.summary,
     url: siteUrl,
     siteName: profile.name,
     type: "website",
@@ -58,7 +61,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title,
-    description: profile.bio,
+    description: profile.summary,
   },
 };
 
@@ -68,6 +71,7 @@ const personJsonLd = {
   name: profile.name,
   url: siteUrl,
   jobTitle: profile.tagline,
+  description: profile.summary,
   address: { "@type": "PostalAddress", addressLocality: profile.location },
   sameAs: [socials.github, socials.linkedin],
 };
@@ -86,12 +90,11 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
         >

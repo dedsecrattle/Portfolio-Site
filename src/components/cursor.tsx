@@ -1,19 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useMediaQuery } from "@/lib/use-media-query";
 
 // A dot at the pointer + a ring that trails it and grows over interactive elements.
 // Only on fine pointers (mouse) with motion allowed — touch/reduced-motion keep the native cursor.
 export function Cursor() {
-  const [on, setOn] = useState(false);
+  const fine = useMediaQuery("(pointer: fine)");
+  const reduce = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const on = fine && !reduce;
   const dot = useRef<HTMLDivElement>(null);
   const ring = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const fine = window.matchMedia("(pointer: fine)").matches;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setOn(fine && !reduce);
-  }, []);
 
   useEffect(() => {
     if (!on) return;
@@ -27,6 +24,9 @@ export function Cursor() {
     const move = (e: MouseEvent) => {
       mx = e.clientX;
       my = e.clientY;
+      // Stay hidden until we know where the pointer actually is.
+      dot.current?.classList.add("cursor-visible");
+      ring.current?.classList.add("cursor-visible");
       if (dot.current) dot.current.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
       const target = e.target;
       const interactive =

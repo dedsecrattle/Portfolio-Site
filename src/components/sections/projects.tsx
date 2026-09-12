@@ -1,27 +1,29 @@
-import { ArrowUpRight, Star } from "lucide-react";
-import { Github } from "@/components/brand-icons";
+import { ArrowUpRightIcon, GithubLogoIcon, StarIcon } from "@phosphor-icons/react/ssr";
 import { SectionHeading } from "@/components/sections/heading";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { projects } from "@/lib/data";
+
+const stripes = ["bg-brand", "bg-nb-pink", "bg-nb-blue", "bg-nb-yellow", "bg-nb-purple", "bg-nb-orange"];
 
 export function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-4xl px-6 py-16">
-      <SectionHeading n="03" title="Projects" />
-      <div className="grid gap-4 sm:grid-cols-2">
-        {projects.map((p) => {
+    <section id="projects" className="mx-auto max-w-5xl px-6 py-16">
+      <SectionHeading n="03" title="Projects" color="bg-nb-yellow" />
+      <div className="grid gap-6 sm:grid-cols-2">
+        {projects.map((p, idx) => {
           const href = p.live ?? p.repo;
           return (
-            <Card key={p.name} className="group flex flex-col transition-colors hover:border-brand/50">
+            <Card key={p.name} className="nb-hover group relative">
+              <div className={`h-3 border-b-2 border-ink ${stripes[idx % stripes.length]}`} aria-hidden />
               <CardHeader>
-                <CardTitle className="flex items-center justify-between font-mono text-base">
-                  <span className="flex items-center gap-2">
+                <CardTitle className="flex items-start justify-between gap-3 font-mono text-lg">
+                  <span className="flex flex-wrap items-center gap-2">
                     {p.name}
                     {p.stars ? (
-                      <span className="flex items-center gap-0.5 font-sans text-xs font-normal text-muted-foreground">
-                        <Star className="h-3 w-3 fill-current" /> {p.stars}
-                      </span>
+                      <Badge variant="yellow" className="normal-case">
+                        <StarIcon weight="fill" /> {p.stars}
+                      </Badge>
                     ) : null}
                   </span>
                   {href && (
@@ -30,23 +32,27 @@ export function Projects() {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={`Open ${p.name}`}
-                      className="text-muted-foreground transition-colors group-hover:text-brand"
+                      className="flex size-8 shrink-0 items-center justify-center border-2 border-ink bg-card transition-colors group-hover:bg-brand group-hover:text-on-accent after:absolute after:inset-0"
                     >
-                      {p.live ? <ArrowUpRight className="h-4 w-4" /> : <Github className="h-4 w-4" />}
+                      {p.live ? (
+                        <ArrowUpRightIcon weight="bold" className="size-4" />
+                      ) : (
+                        <GithubLogoIcon weight="bold" className="size-4" />
+                      )}
                     </a>
                   )}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-1 flex-col gap-4">
-                <p className="text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
-                <div className="mt-auto flex flex-wrap gap-1.5">
-                  {p.tech.map((t) => (
-                    <span key={t} className="font-mono text-xs text-brand">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+              <CardContent>
+                <p className="text-sm leading-relaxed">{p.blurb}</p>
               </CardContent>
+              <CardFooter className="flex-wrap gap-2">
+                {p.tech.map((t) => (
+                  <Badge key={t} variant="outline">
+                    {t}
+                  </Badge>
+                ))}
+              </CardFooter>
             </Card>
           );
         })}

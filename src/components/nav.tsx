@@ -12,19 +12,22 @@ const links = [
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur">
-      <nav className="mx-auto flex h-16 max-w-4xl items-center justify-between px-6">
-        <Link href="#top" className="font-mono text-xl font-bold tracking-tight sm:text-2xl">
+    <header className="sticky top-0 z-50 border-b-[3px] border-ink bg-background">
+      <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
+        <Link
+          href="#top"
+          className="nb-hover flex items-center border-2 border-ink bg-brand px-3 py-1 font-mono text-lg font-bold text-on-accent shadow-nb sm:text-xl"
+        >
           {profile.name.split(" ")[0]}
-          <span className="text-brand">.</span>
+          <span className="caret ml-0.5 inline-block h-[1.05em] w-2.5 bg-ink align-middle" aria-hidden />
         </Link>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <div className="hidden gap-1 sm:flex">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="border-2 border-transparent px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-wide transition-colors hover:border-ink hover:bg-nb-yellow hover:text-on-accent"
               >
                 {l.label}
               </a>
